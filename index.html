@@ -13,7 +13,7 @@
             <fieldset>
                 <legend>Pagrindinė informacija</legend>
                 <label for="gender">Lytis:</label>
-                <select id="gender" name="gender">
+                <select id="gender" name="gender" required>
                     <option value="default" selected>Pasirinkite...</option>
                     <option value="vyras">Vyras</option>
                     <option value="moteris">Moteris</option>
@@ -44,7 +44,7 @@
             <fieldset class="hidden">
                 <legend>Išsilavinimas</legend>
                 <label for="education">Išsilavinimas:</label>
-                <select id="education" name="education">
+                <select id="education" name="education" required>
                     <option value="pagrindinis">Pagrindinis</option>
                     <option value="vidurinis">Vidurinis</option>
                     <option value="profesinis">Profesinis</option>
@@ -58,7 +58,7 @@
                 <br>
 
                 <label for="graduationYear">Baigimo metai:</label>
-                <input type="number" id="graduationYear" min="1950" max="2025" name="graduationYear">
+                <input type="number" id="graduationYear" min="1950" max="2025" value="2000" name="graduationYear">
                 <br>
 
                 <label for="qualification">Kvalifikacija:</label>
@@ -68,31 +68,22 @@
 
             <fieldset class="hidden">
                 <legend>Kontaktai</legend>
-                <label for="education">Išsilavinimas:</label>
-                <select id="education" name="education">
-                    <option value="pagrindinis">Pagrindinis</option>
-                    <option value="vidurinis">Vidurinis</option>
-                    <option value="profesinis">Profesinis</option>
-                    <option value="aukštasis-kolegijinis">Aukštasis-kolegijinis</option>
-                    <option value="aukštasis-universitetinis">Aukštasis-universitetinis</option>
-                </select>
+                <label for="phone">Telefono numeris:</label>
+                <input type="text" id="phone" name="phone" value="+370" required>
                 <br>
 
-                <label for="lastSchool">Paskutinė baigta įstaiga:</label>
-                <input type="text" id="lastSchool" name="lastSchool">
+                <label for="email">El. Paštas:</label>
+                <input type="email" id="email" name="email" required>
                 <br>
 
-                <label for="graduationYear">Baigimo metai:</label>
-                <input type="number" id="graduationYear" min="1950" max="2025" name="graduationYear">
+                <label for="adress">Adresas:</label>
+                <input type="text" id="adress" name="adress" required>
                 <br>
 
-                <label for="qualification">Kvalifikacija:</label>
-                <input type="text" id="qualification" name="qualification">
-                <br>
                 <button type="submit">Pateikti</button>
             </fieldset>
 
-
+            <p>* - privalomas laukas</p>
         </form>
 
         <div id="formStatus">
@@ -103,12 +94,12 @@
             </div>
             <div class="flex">
                 <div><span id="progress">0</span>%</div>  
-                <div id="next">Toliau:<span>Išsilavinimas</span></div>
+                <div id="nextUp">Toliau:<span>Išsilavinimas</span></div>
             </div>
             <button id="prev" class="hidden">← Praeitas Puslapais</button>
             <button id="next">Kitas puslapis →</button>
         </div>
     </main>
-    <script src="scripts.js" defer></script>
+    <script src="scripts.js"></script>
 </body>
 </html>

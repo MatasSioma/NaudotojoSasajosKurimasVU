@@ -7,16 +7,17 @@
 }
 
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 5px;
     font-family: Arial, sans-serif;
-    margin: 20px;
     background-color: #f4f4f9;
 }
 
 main {
     max-width: 800px;
     width: 95vw;
-    min-width: 200px;
-    margin: auto;
     background: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -30,6 +31,11 @@ h1 {
 form {
     display: flex;
     flex-direction: column;
+}
+
+form > p {
+    margin: 0;
+    color: red;
 }
 
 fieldset {
@@ -55,6 +61,12 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+label:has(+ input:required):after, label:has(+ select:required):after {
+    content: ' *';
+    color: red;
+  }
+  
 
 button {
     padding: 10px;
