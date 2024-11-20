@@ -60,7 +60,7 @@ function formSwitch(currentPage) {
 }
 
 function showAndHideOptional(field) {
-    console.log(field.name, field.value)
+    // console.log(field.name, field.value)
     function showOptionalField(fieldId) {
         form.querySelector(`#${fieldId}`).classList.add("show")
         try {
@@ -167,7 +167,7 @@ form.addEventListener("submit", (e) => {
     
     //Įvairi formos duomenų "validacija". pvz.:
     msg = "";
-    if(duomenys["idCode"].length !== 11 /*ir t.t.*/) {
+    if(duomenys["idCode"].value.length !== 11 /*ir t.t.*/) {
         msg += "Asmens kodo formatas neteisingas!";
     }
     //if...
