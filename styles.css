@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f9;
+}
+
+main {
+    max-width: 800px;
+    width: 95vw;
+    min-width: 200px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    margin-top: 10px;
+    background: #0069da;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0073ee;
+}
+
+button[type="submit"] {
+    background: green;
+}
+
+button[type="submit"]:hover {
+    background: rgb(0, 165, 0);
+}
+
+#formStatus {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#formStatus > div {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    padding: 5px 0;
+}
+
+#track, #track-fill {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 10px;
+    border-radius: 20px;
+}
+
+#track {
+    background-color: #ccc;
+}
+
+#track-fill {
+    position: absolute;
+    background-color: #0056b3;
+    width: 0%;
+}
+
+#track-fill.green {
+    background-color: green;
+}
+
+h2 {
+    margin-top: 5px;
+}
+
+#nextUp {
+    margin-left: 10px;
+}
+#nextUp > span {
+    margin-left: 5px;
+}
+
+.flex {
+    display: flex;
+}

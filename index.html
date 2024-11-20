@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinaminė duomenų anketa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>Kliento duomenų anketa</h1>
+        <form id="dataForm">
+            <fieldset>
+                <legend>Pagrindinė informacija</legend>
+                <label for="gender">Lytis:</label>
+                <select id="gender" name="gender">
+                    <option value="default" selected>Pasirinkite...</option>
+                    <option value="vyras">Vyras</option>
+                    <option value="moteris">Moteris</option>
+                </select>
+                <br>
+
+                <label for="firstName">Vardas:</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <br>
+
+                <label for="secondName">Antrasis vardas:</label>
+                <input type="text" id="secondName" name="secondName">
+                <br>
+
+                <label for="lastName">Pavardė:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <br>
+
+                <label for="birthDate">Gimimo data:</label>
+                <input type="date" id="birthDate" name="birthDate" required>
+                <br>
+
+                <label for="idCode">Asmens kodas:</label>
+                <input type="text" id="idCode" name="idCode" required>
+                <br>
+            </fieldset>
+
+            <fieldset class="hidden">
+                <legend>Išsilavinimas</legend>
+                <label for="education">Išsilavinimas:</label>
+                <select id="education" name="education">
+                    <option value="pagrindinis">Pagrindinis</option>
+                    <option value="vidurinis">Vidurinis</option>
+                    <option value="profesinis">Profesinis</option>
+                    <option value="aukštasis-kolegijinis">Aukštasis-kolegijinis</option>
+                    <option value="aukštasis-universitetinis">Aukštasis-universitetinis</option>
+                </select>
+                <br>
+
+                <label for="lastSchool">Paskutinė baigta įstaiga:</label>
+                <input type="text" id="lastSchool" name="lastSchool">
+                <br>
+
+                <label for="graduationYear">Baigimo metai:</label>
+                <input type="number" id="graduationYear" min="1950" max="2025" name="graduationYear">
+                <br>
+
+                <label for="qualification">Kvalifikacija:</label>
+                <input type="text" id="qualification" name="qualification">
+                <br>
+            </fieldset>
+
+            <fieldset class="hidden">
+                <legend>Kontaktai</legend>
+                <label for="education">Išsilavinimas:</label>
+                <select id="education" name="education">
+                    <option value="pagrindinis">Pagrindinis</option>
+                    <option value="vidurinis">Vidurinis</option>
+                    <option value="profesinis">Profesinis</option>
+                    <option value="aukštasis-kolegijinis">Aukštasis-kolegijinis</option>
+                    <option value="aukštasis-universitetinis">Aukštasis-universitetinis</option>
+                </select>
+                <br>
+
+                <label for="lastSchool">Paskutinė baigta įstaiga:</label>
+                <input type="text" id="lastSchool" name="lastSchool">
+                <br>
+
+                <label for="graduationYear">Baigimo metai:</label>
+                <input type="number" id="graduationYear" min="1950" max="2025" name="graduationYear">
+                <br>
+
+                <label for="qualification">Kvalifikacija:</label>
+                <input type="text" id="qualification" name="qualification">
+                <br>
+                <button type="submit">Pateikti</button>
+            </fieldset>
+
+
+        </form>
+
+        <div id="formStatus">
+            <h2>Pildymo progresas</h2>
+            <div>
+                <span id="track"></span>
+                <span id="track-fill" style="width: 0%;"></span>
+            </div>
+            <div class="flex">
+                <div><span id="progress">0</span>%</div>  
+                <div id="next">Toliau:<span>Išsilavinimas</span></div>
+            </div>
+            <button id="prev" class="hidden">← Praeitas Puslapais</button>
+            <button id="next">Kitas puslapis →</button>
+        </div>
+    </main>
+    <script src="scripts.js" defer></script>
+</body>
+</html>
