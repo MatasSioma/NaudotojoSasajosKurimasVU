@@ -1,5 +1,5 @@
 const form = document.getElementById("dataForm");
-const requiredFields = Array.from(form.querySelectorAll(".required"));
+let requiredFields;
 const idCodeField = document.getElementById("idCode");
 const formSets = document.querySelectorAll("fieldset");
 
@@ -59,7 +59,70 @@ function formSwitch(currentPage) {
 
 }
 
+function showAndHideOptional(field) {
+    console.log(field.name, field.value)
+    function showOptionalField(fieldId) {
+        form.querySelector(`#${fieldId}`).classList.add("show")
+        try {
+            form.querySelector(`#${fieldId} > input`).classList.add("required");
+        } catch {
+            form.querySelector(`#${fieldId} > select`).classList.add("required");
+        }
+    }
+
+    function hideOthers(dependacyName) {
+        form.querySelectorAll(`[data-link="${dependacyName}"]`).forEach((el) => {
+            el.classList.remove("show");
+            el.querySelector("input, select").classList.remove("required");
+        });
+    }
+
+    if(field.name === "education") {
+        hideOthers("education");
+        showOptionalField("lastSchool");
+        showOptionalField("graduationYear");
+        if(field.value == "profesinis") {
+            showOptionalField("qualification");
+        } if (field.value == "aukštasis-kolegijinis"
+            || field.value == "aukštasis-universitetinis") {
+                showOptionalField("degreeType");
+                showOptionalField("qualification");
+        }
+    } else if(field.name == "birthDate") {
+        hideOthers("birthDate");
+        const birthDate = new Date(field.value);
+        const today = new Date();
+        const age = today.getFullYear() - birthDate.getFullYear();
+
+        if(age >= 16) {
+            showOptionalField("maritalStatus");
+        }
+    } else if(field.name == "maritalStatus") {
+        hideOthers("maritalStatus");
+        if(field.value == "maried") {
+            showOptionalField("spouse");
+        }
+    } else if(field.name == "work") {
+        hideOthers("work");
+        if(field.value == "studying") {
+            showOptionalField("studyType");
+            showOptionalField("studyYear");
+            showOptionalField("studyPlace");
+            showOptionalField("studyFinishDate");
+        } else if(field.value == "employed") {
+            showOptionalField("workPlace");
+            showOptionalField("workPosition");
+        } else if(field.value == "unemployed") {
+            showOptionalField("unemployedReason");
+        } else if(field.value == "parentalleave") {
+            showOptionalField("parentalLeaveEndDate");
+        }
+    }
+}
+
 function dataUpdate(inputField) {
+    showAndHideOptional(inputField.target);
+    requiredFields = Array.from(form.querySelectorAll(".required"));
     const filledFields = requiredFields.filter(field => {
         const value = field.value.trim();
         return value !== "" && value !== "+370";
@@ -70,6 +133,7 @@ function dataUpdate(inputField) {
 
     if(progress == 100) progressDisplayTrack.classList.add("green");
     duomenys[inputField.target.name] = {value: inputField.target.value, required: inputField.target.classList.contains("required")};
+
 }
 
 function updateIdCode() {
@@ -86,6 +150,7 @@ function updateIdCode() {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+
     let msg = "";
     for(let field of requiredFields) {
         let value = field.value.trim();
@@ -99,7 +164,21 @@ form.addEventListener("submit", (e) => {
         console.table(duomenys);
         return;
     }
-    // try fetch(medtod: "post")...
+    
+    //Įvairi formos duomenų "validacija". pvz.:
+    msg = "";
+    if(duomenys["idCode"].length !== 11 /*ir t.t.*/) {
+        msg += "Asmens kodo formatas neteisingas!";
+    }
+    //if...
+
+    if(msg != "") {
+        alert(msg);
+        return;
+    }
+    
+    // try fetch(medtod: "post")... catch... return;
     alert("Forma sėkmingai pateikta!");
+
     console.table(duomenys);
 });

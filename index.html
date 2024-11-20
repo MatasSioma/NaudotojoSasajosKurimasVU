@@ -39,6 +39,22 @@
                 <label for="idCode">Asmens kodas:</label>
                 <input type="text" id="idCode" name="idCode" class="required">
                 <br>
+
+                <div class="optional" id="maritalStatus" data-link="birthDate">
+                    <label for="maritalStatus">Vedybinė padėtis:</label>
+                    <select name="maritalStatus">
+                        <option value="">Pasirinkite...</option>
+                        <option value="notmaried">Nevedęs/netekėjusi</option>
+                        <option value="maried">Vedęs/ištekėjusi</option>
+                        <option value="brokeup">Išsiskyręs(-usi)]</option>
+                    </select>
+                    <br>
+                    <div class="optional" id="spouse" data-link="maritalStatus">
+                        <label for="spouse">Sutuoktinio pilnas vardas:</label>
+                        <input type="text" name="spouse">
+                        <br>
+                    </div>
+                </div>
             </fieldset>
 
             <fieldset class="hidden">
@@ -54,17 +70,115 @@
                 </select>
                 <br>
 
-                <label for="lastSchool">Paskutinė baigta įstaiga:</label>
-                <input type="text" id="lastSchool" name="lastSchool">
+                <div class="optional" id="lastSchool" data-link="education">
+                    <label for="lastSchool">Paskutinė baigta įstaiga:</label>
+                    <input type="text" name="lastSchool">
+                    <br>
+                </div>
+
+                <div class="optional" id="graduationYear" data-link="education">
+                    <label for="graduationYear">Baigimo metai:</label>
+                    <input type="number" min="1950" max="2025" name="graduationYear">
+                    <br>
+                </div>
+
+                <div class="optional" id="qualification" data-link="education">
+                    <label for="qualification">Kvalifikacija:</label>
+                    <input type="text" name="qualification">
+                    <br>
+                </div>
+
+                <div class="optional" id="degreeType" data-link="education">
+                    <label for="degreeType">Mokslo laipsnis:</label>
+                    <input type="text" name="degreeType">
+                    <br>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="hidden">
+                <legend>Darbas</legend>
+                <label for="work">Darbo padėtis:</label>
+                <select name="work" id="work" class="required">
+                    <option value="">Pasirinkite...</option>
+                    <option value="studying">Studijuojate</option>
+                    <option value="employed">Dirbate</option>
+                    <option value="unemployed">Ne dirbate</option>
+                    <option value="parentalleave">Atostogaujate (motinystės/tėvystės)</option>
+                    <!-- studijuoja, dirba, nedirba, motinystės/tėvystės atostogose -->
+                </select>
                 <br>
 
-                <label for="graduationYear">Baigimo metai:</label>
-                <input type="number" id="graduationYear" min="1950" max="2025" value="2000" name="graduationYear">
-                <br>
+                <div class="optional" id="studyType" data-link="work">
+                    <label for="studyType">Studijų pakopa:</label>
+                    <input type="text" name="studyType">
+                    <br>
+                </div>
 
-                <label for="qualification">Kvalifikacija:</label>
-                <input type="text" id="qualification" name="qualification">
+                <div class="optional" id="studyYear" data-link="work">
+                    <label for="studyYear">Studijų kursas:</label>
+                    <input type="number" min="1" name="studyYear">
+                    <br>
+                </div>
+
+                <div class="optional" id="studyPlace" data-link="work">
+                    <label for="studyPlace">Studijų įstaiga:</label>
+                    <input type="text" name="studyPlace">
+                    <br>
+                </div>
+
+                <div class="optional" id="studyFinishDate" data-link="work">
+                    <label for="studyFinishDate">Tikėtini baigimo metai:</label>
+                    <input type="date" name="studyFinishDate">
+                    <br>
+                </div>
+
+                <div class="optional" id="workPlace" data-link="work">
+                    <label for="workPlace">Darbo vieta:</label>
+                    <input type="text" name="workPlace">
+                    <br>
+                </div>
+
+                <div class="optional" id="workPosition" data-link="work">
+                    <label for="workPosition">Darbo pozicija:</label>
+                    <input type="text" name="workPosition">
+                    <br>
+                </div>
+
+                <div class="optional" id="unemployedReason" data-link="work">
+                    <label for="unemployedReason">Nedarbo priežastis:</label>
+                    <input type="text" name="unemployedReason">
+                    <br>
+                </div>
+
+                <div class="optional" id="parentalLeaveEndDate" data-link="work">
+                    <label for="parentalLeaveEndDate">Atostogų pabaiga:</label>
+                    <input type="date" name="parentalLeaveEndDate">
+                    <br>
+                </div>
+                
+                <label for="workExperience">Darbo patirtis (metais):</label>
+                <input type="number" name="workExperience" min="0" class="required">
                 <br>
+                
+                <label for="workField">Sritis:</label>
+                <select name="workField" id="workField">
+                    <option value="">Pasirinkite...</option>
+                    <option value="law">Teisė</option>
+                    <option value="publicsector">Viešasis sektorius</option>
+                    <option value="healthcare">Sveikatos apsauga</option>
+                    <option value="pharmaceuticals">Farmacija</option>
+                    <option value="manufacturing">Pramonė / gamyba</option>
+                    <option value="it">IT</option>
+                    <option value="military">Krašto apsauga</option>
+                    <option value="governement">Vidaus reikalų sistema</option>
+                    <option value="customerservice">Klientų aptarnavimas ir paslaugos</option>
+                    <option value="transport">Transportas</option>
+                    <option value="showbusiness">Kultūra ir pramogos</option>
+                    <option value="education">Švietimas</option>
+                </select>
+                <br>
+                
             </fieldset>
 
             <fieldset class="hidden">
