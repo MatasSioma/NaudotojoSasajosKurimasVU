@@ -1,5 +1,5 @@
 const form = document.getElementById("dataForm");
-const requiredFields = Array.from(form.querySelectorAll("input[required], select[required]"));
+const requiredFields = Array.from(form.querySelectorAll(".required"));
 const idCodeField = document.getElementById("idCode");
 const formSets = document.querySelectorAll("fieldset");
 
@@ -11,7 +11,7 @@ let currentPage = 0;
 let duomenys = {};
 const fields = form.querySelectorAll("input, select");
 for(let field of fields) {
-    duomenys[field.name] = field.value;
+    duomenys[field.name] = {value: field.value, required: field.classList.contains("required")};
 }
 console.table(duomenys);
 
@@ -62,14 +62,14 @@ function formSwitch(currentPage) {
 function dataUpdate(inputField) {
     const filledFields = requiredFields.filter(field => {
         const value = field.value.trim();
-        return value !== "" && value !== "+370" && value !== "Pagrindinis";
+        return value !== "" && value !== "+370";
     });
     const progress = Math.round((filledFields.length / requiredFields.length) * 100);
     progressDisplay.textContent = progress;
     progressDisplayTrack.style.width = progress + "%";
 
     if(progress == 100) progressDisplayTrack.classList.add("green");
-    duomenys[inputField.target.name] = inputField.target.value;
+    duomenys[inputField.target.name] = {value: inputField.target.value, required: inputField.target.classList.contains("required")};
 }
 
 function updateIdCode() {
@@ -80,12 +80,26 @@ function updateIdCode() {
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
         idCodeField.value = `X${year}${month}${day}XXXX`;
-        duomenys["idCode"] = `X${year}${month}${day}XXXX`;
+        duomenys["idCode"] = {value: `X${year}${month}${day}XXXX`, required: true};
     }
 }
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    let msg = "";
+    for(let field of requiredFields) {
+        let value = field.value.trim();
+        if(value === "" || value === "+370") {
+           msg += form.querySelector(`label[for="${field.name}"]`).innerHTML.replace(":", "") + "\n";
+        }
+    }
+    if(msg != "") {
+        msg += "\nNeužpildėte šių laukų!"
+        alert(msg);
+        console.table(duomenys);
+        return;
+    }
+    // try fetch(medtod: "post")...
     alert("Forma sėkmingai pateikta!");
     console.table(duomenys);
 });

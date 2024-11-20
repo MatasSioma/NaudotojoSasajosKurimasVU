@@ -62,7 +62,7 @@ input, select {
     border-radius: 4px;
 }
 
-label:has(+ input:required):after, label:has(+ select:required):after {
+label:has(+ input.required):after, label:has(+ select.required):after {
     content: ' *';
     color: red;
   }
