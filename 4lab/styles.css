@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 5px;
+}
+
+/* https://getcssscan.com/css-buttons-examples */
+button {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: bolder;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+button:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+button:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+/* Kopijuojamas kodas baigiasi */
+
+.diff-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+input {
+    max-width: 70vw;
+    color: rgb(36, 35, 42);
+    font-size: 16px;
+    min-height: 28px;
+    border-radius: 4px;
+    padding: 8px 16px;
+    border: 2px solid transparent;
+    box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 24%) 0px 1px 2px;
+    background: rgb(251, 251, 251);
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+  }
+
+#game {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#game.hidden {
+    display: none;
+}
+
+#board {
+    display: grid;
+    column-gap: 5px;
+    row-gap: 5px;
+}
+
+#board.easy {
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(2, 80px);
+}
+
+#board.medium {
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(3, 80px);
+}
+
+#board.hard {
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(4, 60px);
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    flex: 1;
+    padding: 10%;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: transform 0.6s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.card.show {
+    transform: rotateY(180deg);
+}
+
+.card.clear {
+    visibility: hidden;
+}
+
+.card > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border: 1px solid black;
+}
+
+.card .front {
+    background-color: rgb(219, 219, 219);
+    color: transparent;
+}
+
+.card .back {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    transform: rotateY(180deg);
+}
+
+#leaderboard {
+    margin-top: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 12px;
+}
+
+thead {
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}

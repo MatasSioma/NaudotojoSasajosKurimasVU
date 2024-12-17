@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atminties žaidimas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Atminties žaidimas</h1>
+    <div id="menu">
+        <input type="text" id="player-name" placeholder="Jūsų vardas">
+        <h2>Pradėti žaidimą</h2>
+        <p>Sunkumo pasirinkimas:</p>
+        <div class="diff-select">
+            <button class="difficulty easy" onclick="startGame(8, 'easy')">Lengvas</button>
+            <button class="difficulty medium" onclick="startGame(12, 'medium')">Vidutinis</button>
+            <button class="difficulty hard" onclick="startGame(20, 'hard')">Sunkus</button>
+        </div>
+    </div>
+    <div id="game" class="hidden">
+        <div>
+            <h3>Taškai: <span id="score">0</span></h3>
+            <div id="board">
+    
+            </div>
+        </div>
+    </div>
+    <div id="leaderboard">
+        <h2>Laimėtojai</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Vardas</th>
+                    <th>Taškai</th>
+                    <th>Sunkumas</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
